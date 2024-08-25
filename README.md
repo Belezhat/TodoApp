@@ -26,7 +26,7 @@ Ce projet est une application de gestion de tâches développée en utilisant Re
 ## Structure du Projet
 
 ```
-nom-du-repo/
+TODO-APP/
 ├── backend/
 │   ├── controllers/
 │   ├── models/
