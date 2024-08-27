@@ -50,3 +50,7 @@ TODO-APP/
 ![TodoAdd.gif](./client/public/assets/TodoAdd.gif)
 ![TodoCrud.gif](./client/public/assets/TodoCrud.gif)
 ![TodoRecap.gif](./client/public/assets/TodoRecap.gif)
+![methodePost.gif](./client/public/assets/methodePost.png)
+![methodeGET.gif](./client/public/assets/methodeGET.png)
+![methodePUT.gif](./client/public/assets/methodePUT.png)
+![methodeDELETE.gif](./client/public/assets/methodeDELETE.png)
