@@ -22,7 +22,7 @@ const App = () => {
   const filteredTodos = todos.filter(todo => {
     if (filter === 'Active') return !todo.completed;
     if (filter === 'Completed') return todo.completed;
-    return true;
+    return true; // Si le filtre est 'All', toutes les tâches sans modification
   });
 
   // Vérification des rappels de tâches
@@ -34,15 +34,20 @@ const App = () => {
        * de l'heure actuelle avec la date de rappel de chaque tâche et voir si cette date est passée. 
       */
       const now = new Date(); 
+      /** Parcourt chaque tâche dans la liste et vérifie si il y a une date de rappel
+       * si la date de rappel est passé ou égale à l'heure actuelle
+       * si elle est marquée comme complétée
+       */
       todos.forEach(todo => {
         if (todo.reminderDate && new Date(todo.reminderDate) <= now && !todo.completed) {
           //console.log('Rappel déclenché pour:', todo.title);  
+          // Si toutes les conditions sont remplies, cela la signifie qu'il est temps de faire un rappel
           showNotification('Rappel de tâche', `Il est temps de faire: ${todo.title}`);
         }
       });
     };
 
-    const intervalId = setInterval(checkReminders, 60000); // Vérifie toutes les minutes
+    const intervalId = setInterval(checkReminders, 60000); // 60000 millisecondes = 1 minute vérifie toutes les minutes
     return () => clearInterval(intervalId); // Annulation de l'interval
   }, [todos]); // Surveille la liste des tâches, si elle change alors "useEffect" est réexécuté et réinitialise l'intervalle
 
@@ -82,6 +87,7 @@ const App = () => {
         />
         <div className="mt-6 flex items-center space-x-20">
           <span className="text-lg">
+          {/* Retourne le nombre de tâches restantes à accomplir */}
             Tâches restantes: {todos.filter(todo => !todo.completed).length}
           </span>
           <div className="flex space-x-10">
