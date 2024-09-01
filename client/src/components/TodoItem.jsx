@@ -4,16 +4,21 @@ import { faTrash, faCheck, faSave } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 const TodoItem = ({ todo, onDelete, onToggle, onUpdate }) => {
- // console.log('TodoItem rendu', todo);
+  // console.log('TodoItem rendu', todo);
 
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(todo.title);
   const [updatedDescription, setUpdatedDescription] = useState(todo.description);
+  const [updatedReminderDate, setUpdatedReminderDate] = useState(todo.reminderDate || '');
 
   const handleSave = () => {
-    console.log('En train de sauvegarder la tâche:', updatedTitle, updatedDescription);
+    console.log('En train de sauvegarder la tâche:', updatedTitle, updatedDescription, updatedReminderDate);
     if (updatedTitle.trim() && updatedDescription.trim()) {
-      onUpdate(todo._id, { title: updatedTitle, description: updatedDescription });
+      onUpdate(todo._id, { 
+        title: updatedTitle, 
+        description: updatedDescription,
+        reminderDate: updatedReminderDate,
+      });
     }
     setIsEditing(false);
   };
@@ -36,11 +41,20 @@ const TodoItem = ({ todo, onDelete, onToggle, onUpdate }) => {
               onChange={(e) => setUpdatedDescription(e.target.value)}
               className="border p-1 rounded w-full mt-2"
             />
+            <input
+              type="datetime-local"
+              value={updatedReminderDate}
+              onChange={(e) => setUpdatedReminderDate(e.target.value)}
+              className="border p-1 rounded w-full mt-2"
+            />
           </div>
         ) : (
           <div>
             <h3 className="text-lg font-bold text-gray-800">{todo.title}</h3>
             <p className="text-gray-600">{todo.description}</p>
+            {todo.reminderDate && (
+              <p className="text-gray-500">Rappel: {new Date(todo.reminderDate).toLocaleString()}</p>
+            )}
           </div>
         )}
       </div>
@@ -89,5 +103,6 @@ TodoItem.propTypes = {
 };
 
 export default TodoItem;
+
 
 
