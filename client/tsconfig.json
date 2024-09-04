@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Passe à ES6 pour prendre en charge les fonctionnalités modernes
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Améliore la lisibilité en utilisant des majuscules
+    "allowJs": true, // Autorise le JS, utile pour une migration progressive
+    "skipLibCheck": true, // Ignore la vérification des types des fichiers de déclaration
+    "esModuleInterop": true, // Compatible avec les modules CommonJS
+    "allowSyntheticDefaultImports": true, // Permet l'importation par défaut
+    "strict": true, // Active toutes les vérifications strictes
+    "forceConsistentCasingInFileNames": true, // Assure une casse cohérente des noms de fichiers
+    "noFallthroughCasesInSwitch": true, // Empêche les erreurs dues au fallthrough des switchs
+    "module": "ESNext", // Utilise le système de modules ESNext pour la modularité moderne
+    "moduleResolution": "node", // Résolution des modules à la manière de Node.js
+    "resolveJsonModule": true, // Permet d'importer des fichiers JSON
+    "isolatedModules": true, // Assure que chaque fichier est traité comme un module séparé
+    "jsx": "react-jsx", // Spécifie la transformation JSX pour React 17+
+    "noImplicitAny": true, // Empêche l'utilisation implicite du type `any`
+    "strictNullChecks": true, // Vérifie strictement les valeurs null et undefined
+    "baseUrl": "./src", // Définit un chemin de base pour éviter les chemins relatifs complexes
+    "paths": {
+      "@components/*": ["components/*"], // Aliases pour les chemins courants
+      "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"]
+    },
+    "outDir": "./dist", // Spécifie un dossier de sortie pour les fichiers compilés
+    "removeComments": true // Supprime les commentaires dans les fichiers compilés
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"] // Exclut les fichiers de test et node_modules
+}
+
+
+  
